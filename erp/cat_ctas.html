@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>CatCuentas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+
+#lista{		
+	padding-left:0px;
+	margin:0px;
+}
+
+#lista ul{
+	margin-left:25px;
+	padding:0px;
+}
+#lista li{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+
+#lista li a{
+	display:block;
+	padding:0.3em;
+	padding-left:0.9em;
+	background-color:#F2F2F2;
+	margin:2px;
+	text-decoration:none;
+	color:#000;
+}
+
+span{
+	margin:5px;
+	font-size:1.2em;
+	padding:0.2em;
+	display:block;
+	font-weight:bold;
+}
+
+#lista li a:hover{
+	background-color:#D8D8D8;
+}
+
+
+</style>
+</head>
+<body>
+<center><span> Catalos de Cuentas </span></center>
+<ul id="lista">	
+	<li><a href="#" style="background-color:#CEF6D8" data-toggle="collapse" data-target="#catActivo">Activo</a>
+		<ul id="catActivo" class="collapse in">
+			<li><a href="#">1101-Caja</a></li>
+			<li><a href="#">1102-Bancos</a></li>
+		</ul>
+	</li>
+	<li><a href="#" style="background-color:#F6CECE" data-toggle="collapse" data-target="#catPasivo">Pasivo</a>
+		<ul id="catPasivo" class="collapse in">
+			<li><a href="#">2101-Proveedores</a></li>
+		</ul>
+	</li>
+	<li><a href="#" style="background-color:#F5D0A9" data-toggle="collapse" data-target="#catPatrimonio">Patrimonio</a>
+		<ul id="catPatrimonio" class="collapse in">
+			<li><a href="#">Sub 1.1</a></li>
+		</ul>
+	</li>
+	<li style="display:none"><a href="#" style="background-color:#CEE3F6" data-toggle="collapse" data-target="#catPresupuesto">Presupuesto</a>
+		<ul id="catPresupuesto" class="collapse in">
+			<li><a href="#">Sub 1.1</a></li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>

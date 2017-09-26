@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html ng-app="appmain">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Genius Kids Pre-School">
+<meta name="keywords" content="prebasica,musica,kinder,honduras,ingles">
+<meta name="author" content="A. Morga">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="shorcut icon" href="img/imgs/logo.png" type="favicon/ico" />
+
+
+<link href="css/css_prematricula.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script src="js/jquery-ui-1.12.min.js"></script>
+<script type="text/javascript" src="js/ang_prematricula.js"></script>
+
+<title>CET</title>
+</head>
+
+<body ng-controller="appcontrol1" onresize="f_resize()">
+<div class="container-fluid" style="padding:0px">
+	<div class="container-fluid cl_head" style="padding:0px">
+		<div class="col-sm-5 " style="padding-top:4px">
+			<img src="img/logo.png" width="70px" height="70px" />
+			<span class="lbl_subtit1">CET Genius Kids</span>
+		</div>
+	</div>
+			<!--Menu-->
+			<nav class="navbar navbar-inverse">
+			  <div class="container-fluid">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="index.html">GK</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+				  <ul class="nav navbar-nav">
+					<li class="dropdown">
+					  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Plan Educativo<span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+						<li><a href="preschool.html">Pre-Basica</a></li>
+						<li><a href="#">Basica (Primaria)</a></li>
+					  </ul>
+					</li>
+					<li><a href="#">Educ. Artistica</a></li>
+					<li class="dropdown">
+					  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Escuela de Tareas<span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+						<li><a href="#">Basica (Primaria)</a></li>
+					  </ul>
+					</li>
+					<li class="dropdown">
+					  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Conocenos<span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+						<li><a href="#">Galeria</a></li>
+						<li><a href="#">Instalaciones</a></li>
+					  </ul>
+					</li>
+					<li><a href="#">Prematricula</a></li>								
+				  </ul>
+				  <!--<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				  </ul>-->
+				</div>
+			  </div>
+			</nav>
+			<!--Fin Menu-->		
+
+   
+	<div class="container-fluid" style="margin-top:-20px; padding:0px">
+		
+        <div class="row" style="margin:0px; margin-top:20px">
+			<div class="col-xs-12" style="text-align:center"><span class="lbl_title1">Prematrícula</span><img src="img/enroll.png" width="60px" style="margin-left:20px"/></div>
+		</div>
+        <br>
+        <div class="container-fluid" id="dv_prema">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span>Datos del Niño(a)</span>
+                </div>
+                <div class="panel-body">
+                	<div class="row">
+                    	<div class="col-md-3">
+                        <span>Identidad</span>
+                    	<input type="text" id="txt_identidad" ng-model="idkid" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Fecha Nacimiento</span>
+                    	<input type="text" id="txt_fechnac" ng-model="fechNac" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Sexo</span>
+                        <select class="form-control" ng-model="sexo">
+                        	<option value=1>Masculino</option>
+                            <option value=0>Femenino</option>
+                        </select>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Grado</span>
+                        <select class="form-control" ng-model="grado">
+                        	<option value=1>1° PreBásica</option>
+                            <option value=2>2° PreBásica</option>
+                            <option value=3>3° PreBásica(Preparatoria)</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                        <span>Primer Nombre</span>
+                    	<input type="text" id="txt_primer_nombre" ng-model="name1" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Segundo Nombre</span>
+                    	<input type="text" id="txt_segundo_nombre" ng-model="name2" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Primer Apellido</span>
+                    	<input type="text" id="txt_primer_apellido" ng-model="lname1" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Segundo Apellido</span>
+                    	<input type="text" id="txt_segundo_apellido" ng-model="lname2" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Datos del Contacto -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span>Datos del Contacto(Pader/Madre)</span>
+                </div>
+                <div class="panel-body">
+                	<div class="row">
+                    	<div class="col-md-3">
+                        <span>Identidad</span>
+                    	<input type="text" id="txt_identidad" ng-model="idcontact" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Relacion con el Niño(a)</span>
+                    	 <select class="form-control" ng-model="relacion_contacto">
+                        	<option value=1>Padre</option>
+                            <option value=2>Madre</option>
+                            <option value=3>Otro</option>
+                        </select>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                        <span>Primer Nombre</span>
+                    	<input type="text" id="txt_primer_nombre" ng-model="namecontact" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Primer Apellido</span>
+                    	<input type="text" id="txt_primer_apellido"  ng-model="lnamecontact" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>Telefono</span>
+                    	<input type="text" id="txt_telefono" ng-model="telefono" class="form-control"/>
+                        </div>
+                        <div class="col-md-3">
+                        <span>E-Mail</span>
+                    	<input type="text" id="txt_email" ng-model="email" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-6">
+                        <span>Direccion</span>
+                        <textarea class="form-control" ng-model="dir"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <center>
+            <input type="button" value="Limpiar" class="btn btn-default" ng-click="f_limpiar()">
+            <input type="button" value="Guardar" class="btn btn-success" ng-click="f_guardar()">
+            </center><br>
+            <!--<div><center>
+            	<h3>Datos Guardados Exitosamente</h3>
+                <p>Muy pronto nos pondremos en contacto para confirmar su información.
+                <br>Gracias por preferirno. Genius Kids.</p>
+                </center>
+            </div>-->
+        </div>
+	<br />
+	<div class="container-fluid cl_foot">
+		<div class="row" style="margin-top:10px">
+			<div class="col-sm-6 col-xs-12" style="margin-top:10px">
+				<div class="row">
+					<div class="col-xs-2">Direccion:</div>
+					<div class="col-xs-10">
+						Danlí, El Paraiso. Salida a Jamastran calle principal Col. Rodas frete a Iglesia Mormona. <br>Honduras C.A.
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-xs-12" style="margin-top:10px">
+				<div class="row">
+					<div class="col-xs-2">Teléfonos:</div>
+					<div class="col-xs-10">
+						 +50497028375 / +50497351059
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-xs-12" style="margin-top:10px">
+				<div class="row">
+					<div class="col-xs-2">Email:</div>
+					<div class="col-xs-10">
+						 gkhninfo@gmail.com
+					</div>					
+				</div>
+			</div>
+			<div class="col-sm-6 col-xs-12" style="margin-top:10px">
+				<div class="row">
+					<div class="col-xs-2"></div>
+					<div class="col-xs-10">
+						 <img src="img/face_icon.png" width="35px" height="35px" />
+						 <img src="img/youtube_icon.png" width="35px" height="35px" style="margin-left:5px" />
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+</body>
+
+<script type="text/javascript">
+	f_resize();
+	function f_resize(){
+		var w = $(window).width();
+		var h = w/1.6;		
+		//alert(h);
+		$("#dv").css("height",h);
+		$(".img_carrusel").css("height",h);
+	}
+</script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+</html>

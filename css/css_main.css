@@ -1,0 +1,61 @@
+/* Estilos principales */
+
+body{
+	margin:0 Auto;
+}
+
+.cl_head{
+	height:83px;
+	z-index:2;
+	padding:0px;
+	background-color:#E6E6E6;
+	/*color:#E6E6E6;*/
+	/*border-left:solid 1px #8A0808;*/
+	border-bottom:solid 4px #8A0808;
+	/*border-right:solid 1px #8A0808;*/
+	
+}
+
+.cl_foot{
+	/*height:200px;*/
+	padding:0px;
+	padding-bottom:15px;
+	background-color:#8A0808;
+	color:#CCC;
+	/*border-left:solid 1px #8A0808;
+	border-bottom:solid 1px #8A0808;
+	border-right:solid 1px #8A0808;*/	
+}
+
+.cl_menu{
+	/*height:50px;*/
+	padding:0px;
+	background-color:#8A0808;	
+}
+
+.dv_info{
+	border-bottom:solid 1px #CCC; 
+	margin-bottom:10px; 
+	margin-top:10px
+}
+
+.lbl_subtit1{
+	font-size:1.6em;
+	font-style:italic;
+	color:#8A0808;
+	font-height:800;
+	font-family:time new romans;
+	margin-left:10px
+}
+
+.lbl_title1{
+	font-size:2em;
+	font-style:italic;
+	color:#8A0808;
+	font-height:800;
+	font-family:time new romans;
+}
+
+@media screen and (max-width: 800px) {
+
+}

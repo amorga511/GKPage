@@ -1,0 +1,17 @@
+@import url('css_main.css');
+
+.texto1{
+	font-family:"Times New Roman", Times, serif;
+	font-style:italic;
+	font-size:1.5em;
+}
+
+.texto2{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:1.3em;
+}
+
+
+@media screen and (max-width: 800px) {
+
+}

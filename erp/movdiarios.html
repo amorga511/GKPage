@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html ng-app="appmain">
+<head>
+<title>GK Accounting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link href="css/css_main.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-controller="appcontrol1" style="background-color:#E6E6E6"> 
+<div class="container" style="padding:0px; background-color:#FFF">
+	<!-- Header -->
+	<div id="vdheader" class="dv_header">
+		head
+	</div>
+	<!-- End Header -->
+	
+	<!-- Menu-->
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span> 
+		  </button>
+		  <a class="navbar-brand" href="index.html">GK Admin</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav">
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">RRHH<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				  <li><a href="#">Personal</a></li>
+				  <li><a href="#">Contrataciones</a></li>
+				</ul>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Contabilidad<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				  <li><a href="#">Movs. Diarios</a></li>					
+				  <li><a href="#">Planilla</a></li>
+				  <li><a href="#">Reportes</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Page 2</a></li> 
+			<li><a href="#">Page 3</a></li> 
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	<!-- Fin Menu -->
+	<!-- Body -->
+	<div class="container-fluid">
+		
+		<ul class="nav nav-tabs">
+			<li ng-class="{'active':flag_nuevaPda}" ><a href="#" ng-click="f_submenu_diarios(1)">Nuevo</a></li>
+			<li ng-class="{'active':flag_buscarPda}"><a href="#" ng-click="f_submenu_diarios(2)">Buscar</a></li>
+		</ul>
+		<br>
+		
+		<!-- Nueva Partida -->
+		<div class="panel panel-default" ng-show="flag_nuevaPda">
+			<div class="panel-heading">
+				Movimientos Diarios - Nueva Partida
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">
+						<span>Fecha</span>
+						<input type="text" id="txt_fechPDA" class="form-control" />
+					</div>
+				</div>
+				
+				<!-- Detalle Cuentas -->
+				<div class="panel panel-primary" style="margin-top:15px">
+					<div class="panel-heading">
+						Cuentas
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-2">
+								<span>Debe/Haber</span>
+								<select class="form-control" ng-model="vDH"/>
+									<option value=0>Debe</option>
+									<option value=1>Haber</option>
+								</select>
+							</div>							
+							<div class="col-md-3">
+								<span>Cod Cuenta</span>
+								<div class="input-group">
+								<input type="text" id="txt_codCta" class="form-control input-sm" style="z-index:1" ng-keydown="validaKey($event)" ng-model="vCta" > 
+								<a href="#" ng-click="openCatCtas();"  class="input-group-addon">
+								<span class="glyphicon glyphicon-search"></span>
+								</a>									
+								</div>
+								<!--<select class="form-control" ng-model="vCta" />
+									<option value={{vctas.cod}} ng-repeat="vctas in listCtas">{{vctas.name}}</option>
+								</select>-->
+							</div>							
+							<div class="col-md-3">
+								<span>Cuenta</span>
+								<input type="text" id="txt_nameCta" readonly="true" class="form-control input-sm" ng-model="vNameCtaT" />
+							</div>
+							<div class="col-md-2">
+								<span>Monto</span>
+								<input type="text" class="form-control" id="txt_monto"  ng-model="vMonto" ng-keydown="validaDigitos($event)"/>
+							</div>
+							<div class="col-md-2">
+								<input type="button" class="btn btn-success" style="margin-top:20px" value="Add" ng-click="f_addCta()"/>
+							</div>
+						</div>
+						
+						<table id="tbl_ctas" class="table table-striped" style="margin-top:15px;"> 
+							<thead >
+								<th class="hidden-sm hidden-xs">COD</th>
+								<th>CUENTA</th>
+								<th>DEBE</th>
+								<th>HABER</th>
+								<th>-</th>
+							</thead>
+							<tr ng-repeat="ctas in cuentas">
+								<td class="hidden-sm hidden-xs">{{ ctas.cod}}</td>
+								<td>{{ctas.cta}}</td>
+								<td>{{ctas.debe}}</td>
+								<td>{{ctas.haber}}</td>
+								<td><input type="button" id="{{ctas.cod}}" class="btn btn-danger" value="-" ng-click="f_remove($event)" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!-- fin detalle cuentas -->
+				
+				<div class="row">
+					<div class="col-md-5">
+						<span>Descripcion</span>
+						<textarea rows="2" maxlength="60"  class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-10">
+						<input type="button" class="btn btn-default" style="margin-top:20px" value="Limpiar" onclick="limpiar()"/>
+						<input type="button" class="btn btn-success" style="margin-top:20px" value="Save"/>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- Fin Nueva Partida -->
+		
+		<!-- Buscar PDAs -->
+		<div class="panel panel-default" ng-show="flag_buscarPda">
+			<div class="panel-heading">
+				Busqueda Partidas
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-2">Criterio
+						<select class="form-control input-sm" />
+							<option value=0>Por Fechas</option>
+							<option value=1>Por Cuenta</option>
+							<option value=3>Cuenta y Fechas</option>
+						</select>
+					</div>
+					<div class="col-md-2">Fech. Ini
+						<input id="txt_Fini" type="text" class="form-control input-sm" />
+					</div>
+					<div class="col-md-2">Fech. Fin
+						<input id="txt_Ffin" type="text" class="form-control input-sm" />
+					</div>
+					<div class="col-md-3">Cuenta
+						<select class="form-control input-sm" />
+							<option value=0>-- CTAS --</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<input type="button" value="Buscar" class="btn btn-info" style="margin-top:18px;" />
+					</div>
+				</div>
+				<br>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Resultado de Busqueda</div>
+					<div class="panel-body">-</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- Fin Buscar PDAs -->
+	</div>
+	<!-- End Body -->
+</div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.12.min.js"></script>
+<script type="text/javascript" src="js/acount_movDiarios.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</html>
